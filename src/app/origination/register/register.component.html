@@ -1,0 +1,45 @@
+<mat-card>
+  <div style="color:green" id="successDiv" *ngIf="successMsg">User added with {{successMsg.id}}</div>
+  <form #userForm="ngForm" (ngSubmit)="save(userForm.value)" class="form">
+    <mat-card-header>
+      <mat-card-title><h2>Register User</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="First Name" [(ngModel)]="user.firstName" required name="firstName">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Last Name" [(ngModel)]="user.lastName" required name="lastName">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="CNP" [(ngModel)]="user.cnp" name="cnp" >
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" [(ngModel)]="user.email" required name="email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Phone Number" [(ngModel)]="user.phone" required name="phone">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <!--<input matInput placeholder="Where did you hear about us?" [(ngModel)]="" name="marketingChannel">-->
+          <mat-select placeholder="Where did you hear about us?" [(ngModel)]="user.marketingChannel" name="marketingChannel">
+            <mat-option *ngFor="let option of this.marketingChannelOptions" [value]="option.id">
+              {{option.name}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="How will you use this credit?" [(ngModel)]="user.loanReason" name="loanReason">
+      </mat-form-field>
+      <input type="checkbox" [(ngModel)]="user.signedPrivacyAgreement" required name="signedPrivacyAgreement">: By ticking the box, I acknowledge that I have read, understand and agree to the Terms of Use of this site.<br>
+      <input type="checkbox" [(ngModel)]="user.dprocNoMarketing" name="dprocNoMarketing">: I agree to receive offers, promotions and marketing communications under the terms and conditions.
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!userForm.form.valid">Save
+      </button>
+      <a mat-button routerLink="/">Cancel</a>
+    </mat-card-actions>
+
+  </form>
+</mat-card>
