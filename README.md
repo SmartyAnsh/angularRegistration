@@ -1,6 +1,6 @@
 # Angular User Registration
 
-Code to register User, Show Json and Show all Users
+Code to register User, show saved User Json, show Users List and remove User
 
 Connect to localhost:9090 on [Spring Boot - Mongo Project](https://github.com/SmartyAnsh/springboot_mongo)
 
